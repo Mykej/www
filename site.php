@@ -201,6 +201,95 @@
             echo $friends[4] = "Angela";
             echo "<br>";
             echo count($friends);
+            echo "<br>";
+            echo "<br>";
         ?>
+
+        <?php //Using Checkboxes ?>
+
+        <form action = "site.php" method = "post">
+            Apples: <input type = "checkbox" name = "fruits[]" value = "apples"><br>
+            Oranges: <input type = "checkbox" name = "fruits[]" value = "oranges"><br>
+            Pears: <input type = "checkbox" name = "fruits[]" value = "pears"><br>
+            <input type = "submit"/>
+        </form>
+        <?php 
+            $fruits = $_POST["fruits"];
+            echo $fruits[1];
+            echo "<br>";
+            echo "<br>";
+        ?>
+
+        <?php //Associative Arrays ?>
+        <form action = "site.php" method = "post">
+            <input type = "text" name = "student">
+            <input type = "submit">
+        </form>
+
+        <?php 
+            $grades = array("Jim"=>"A+", "Pam"=>"B-", "Oscar"=>"C+"); //Key value pairs are mapped with "=>".
+            $grades["Jim"] = "F <br>"; //modifying value in associative arrays
+            echo $grades["Jim"];
+            echo count($grades); //counts the number of key-value pairs in an array
+            echo "<br>";
+            echo $grades[$_POST["student"]]; //lines 224-227, use php to access array values using forms
+            echo "<br>";
+            echo "<br>";
+        ?>
+
+        <!--Functions |
+            use the word 'function' to create a function then give the name of the function 'sayHi'. use parenthesis followed by open and closed brackets. functions are reusable code. -->
+        <?php
+            function sayHi($name, $age){
+                echo "Hello $name, you are $age. <br>";
+            }
+
+            sayHi("Tim", 40); // call the function from line 243.
+        ?>
+
+        <!-- Return Statements |  -->
+        <?php 
+            function cube($num){
+                return $num * $num * $num; //return breaks out of function, will be the last line of code to be executed
+                echo "hello"; //doesn't get executed because of line 253.
+            }
+            $cubeResult = cube(4);
+            echo $cubeResult;
+            // echo cube(5); //shorthand of line 255-256
+            echo "<br>";
+            echo "<br>";
+        ?>
+
+        <!--If Statements | -->
+        <?php 
+            $isMale = true;
+            $isTall - true;
+            if ($isMale && $isTall){
+                echo "You are a tall male";
+            } elseif ($isMale && !$isTall) {
+                echo "You are male and short.";
+            } elseif (!$isMale && $isTall) {
+                echo "you are not male but are tall";
+            } else {
+                echo "you are not male and not tall.";
+            }
+        
+        ?>
+        <!--If Statements con't | Comparisons Operators -->
+        <?php
+            echo "<br>";
+            echo "<br>";
+            function getMax($num1, $num2, $num3){
+                if($num1 >= $num2 && $num1 >= $num3) {
+                    return $num1;
+                } elseif($num2 >= $num1 && $num2 >= $num3) {
+                    return $num2;
+                } else {
+                    return $num3;
+                }
+            }
+            echo getMax(3000, 1500, 900);
+        ?>
+
     </body>
 </html>
