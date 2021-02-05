@@ -147,6 +147,39 @@
         //Changing the values of the numbers in the url will also change the answer or value. *information that is submitted
         ?>
 
+        <!-- Building a better calculator -->
+        <br>
+        <br>
+        <form action = "site.php" method = "post">
+            First Num: <input type = "number" step = "0.001" name = "num1"/> 
+            <!-- We can use the 'step' attribute to include floating numbers in the calculator. -->
+            <br>
+            OP: <input type = "text" name = "op"/> <br>
+            Second Num: <input type = "number" name = "num2"/> <br>
+            <input type = "submit"/>
+        </form>
+
+        <?php 
+            $num1 = $_POST["num1"];
+            $num2 = $_POST["num2"];
+            $op = $_POST["op"];
+
+            if($op == "+"){
+                echo $num1 + $num2;
+            } elseif($op == "-") {
+                echo $num1 - $num2;
+            } elseif($op == "*") {
+                echo $num1 * $num2;
+            } else if($op == "/") {
+                echo $num1 / $num2;
+            } else {
+                echo "Invalid Operator";
+            }
+
+        ?>
+        <br>
+        <br>
+
         <?php //Building a mad libs game ?>
 
         <form action = "site.php" method = "get">
@@ -290,6 +323,89 @@
             }
             echo getMax(3000, 1500, 900);
         ?>
+
+        <br>
+        <br>
+
+        <!-- Switch Statements -->
+        <form action = "site.php" method = "post">
+            What was your grade?
+            <input type = "text" name = "grade">
+            <input type = "submit">
+        </form>
+
+        <?php //switch is a programming structure where the 'break' will break you out of the strucure when cases meet the criteria.
+        $grade = $_POST["grade"];
+        switch($grade){
+            case "A":
+                echo "You did amazing!";
+                break; //
+            case "B":
+                echo "You did pretty good.";
+                break;
+            case "C":
+                echo "You can do better.";
+                break;
+            case "D":
+                echo "You did poorly.";
+                break;
+            case "F":
+                echo "You Failed!";
+                break;
+            default:
+                echo "Invalid Grade";
+        }
+        ?>
+        <br>
+        <br>
+
+        <!--While loops | Loop over a block of code while a certain condition is met | Keep repeating something as long as something is true -->
+        <?php 
+            $index = 1;
+            while($index <= 5) {//loop body
+                echo "$index <br>";
+                $index++; 
+            }
+        ?>
+        <br>
+        <br>
+
+        <!--Do While Loop -->
+        <?php 
+            $index = 6;
+            do {
+                echo "$index <br>";
+                $index++; 
+            } while($index <= 5);
+        ?>
+        <br>
+        <br>
+
+        <!-- For Loops -->
+        <?php
+            $luckyNumbers = array(4, 8, 14, 16, 23, 42);
+            for($i = 0; $i < count($luckyNumbers); $i++) { //use the 'for' loop to loop through every number in the array.
+                echo "$luckyNumbers[$i] <br>";
+            }
+        ?>
+        <br>
+        <br>
+
+        <!-- Including HTML -->
+        <!-- <!DOCTYPE html>
+                <html>
+                    <head>
+                        <meta charset = "utf-8/>
+                        <title></title>
+                    </head>
+                    <body> -->
+                        <!-- Allows us to include another file inside out php file -->
+
+                        <?php
+                            include"header.html"
+                        ?>
+                    <!--</body>
+                </html> -->
 
     </body>
 </html>
